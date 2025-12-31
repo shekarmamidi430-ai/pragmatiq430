@@ -3,10 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
-import { Switch } from "antd";
-import {  Modal, message, } from "antd";
+import { useState, useEffect, } from "react";
+import { Switch, } from "antd";
+import { Modal, message, } from "antd";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
+
+const experiences = [
+  { name: "Education", icon: "/Ellipse1.png" },
+  { name: "Fintech", icon:  "/Ellipse2.png" },
+  { name: "Travel & Hospitality", icon:  "/Ellipse3.png" },
+  { name: "Healthcare", icon:  "/Ellipse4.png" },
+  { name: "Real Estate", icon:  "/Ellipse5.png" },
+  { name: "E-Commerce", icon:  "/Ellipse6.png" },
+  { name: "SaaS Products", icon:  "/Ellipse7.png" },
+  { name: "Enterprise Apps", icon: "/Ellipse8.png" },
+  { name: "Entertainment", icon:  "/Ellipse9.png" },
+  { name: "Social Apps", icon:  "/Ellipse10.png" },
+  { name: "Lifestyle", icon: "/Ellipse11.png" },
+  { name: "Marketing Website", icon: "/Ellipse12.png" },
+];
 
 
 export default function Home() {
@@ -70,7 +85,7 @@ export default function Home() {
     <main className={styles.page}>
 
       <header className={styles.navbar}>
-        <Link href="/dashboard" className="pragmatiqLogo">
+         <Link href="/dashboard" className="pragmatiqLogo">
           <Image
             src="/prag.png"
             alt="Pragmatiq"
@@ -80,6 +95,7 @@ export default function Home() {
             priority
           />
         </Link>
+        
         <nav className={styles.navLinks}>
           <Link href="/whatwedo">What We Do</Link>
           <Link href="/howwedo">How We Do</Link>
@@ -90,111 +106,53 @@ export default function Home() {
           <Link href="/careers">Careers</Link>
         </nav>
 
-
+   
       </header>
 
+      <section className={styles.experienceSection}>
 
-
-
-      <button className={styles.contactButton} onClick={showModal}>
-        Contact Us
-      </button>
-
-<<<<<<<< HEAD:ourworks/page.tsx
- 
-            <section className={styles.worksSection}>
-                <div className={styles.headingWrapper}>
-                    <span className={`${styles.frame} ${styles.topLeft}`} />
-                    <span className={`${styles.frame} ${styles.topRight}`} />
-                    <span className={`${styles.frame} ${styles.bottomLeft}`} />
-                    <span className={`${styles.frame} ${styles.bottomRight}`} />
-
-                    <h1 className={styles.heading}>Our Works</h1>
-                    <p className={styles.subHeading}>
-                       All our projects are aligned and executed.
-                    </p>
-
-
-                    <div className={styles.bottomIcons}>
-                        {[
-                            "/our.jpeg",
-                            "/our1.jpeg",
-                            "/our2.jpeg",
-                            "/our3.jpeg",
-
-                        ].map((icon, i) => (
-                            <Image
-                                key={i}
-                                src={icon}
-                                alt="icon"
-                                width={28}
-                                height={28}
-                                className={styles.icon}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-
-                <div className={styles.cards}>
-                    {[
-                        "/ourwork.png",
-                        "/ourwork1.png",
-                        "/ourwork2.png",
-                        "/ourwork3 (2).png",
-                        "/ourwork4.png",
-                        "/ourwork5.png",
-                    ].map((img, i) => (
-                        <div className={styles.card} key={i}>
-                            <Image
-                                src={img}
-                                alt="Work"
-                                fill
-                                className={styles.image}
-                                priority={i === 0}
-                            />
-                        </div>
-                    ))}
-                </div>
-            </section>
-========
-      <section className={styles.worksSection}>
-        <div className={styles.headingWrapper}>
+        <div className={styles.titleWrapper}>
           <span className={`${styles.frame} ${styles.topLeft}`} />
           <span className={`${styles.frame} ${styles.topRight}`} />
           <span className={`${styles.frame} ${styles.bottomLeft}`} />
           <span className={`${styles.frame} ${styles.bottomRight}`} />
 
-          <h1 className={styles.heading}>Our Works</h1>
-          <p className={styles.subHeading}>
-            Our secret sauce. Learnings from building tech products for 200+ startups
-          </p>
+          <h1 className={styles.title}>Our Experience</h1>
         </div>
 
-        <div className={styles.cards}>
-          {[
-            "/ourwork.png",
-            "/ourwork1.png",
-            "/ourwork2.png",
-            "/ourwork3.png",
-            "/ourwork4.png",
-            "/ourwork5.png",
-          ].map((img, i) => (
-            <div className={styles.card} key={i}>
-              <Image
-                src={img}
-                alt="Work"
-                fill
-                className={styles.image}
-                priority={i === 0}
-              />
+        <div className={styles.grid}>
+          {experiences.map((item, index) => (
+            <div className={styles.card} key={index}>
+              <div className={styles.icon}>
+                <Image src={item.icon} alt={item.name} width={26} height={26} />
+              </div>
+              <p>{item.name}</p>
             </div>
           ))}
         </div>
       </section>
->>>>>>>> 32e45c952231e5600d0b1f686971b77db56628ac:src/app/ourworks/page.tsx
+
+      <button className={styles.contactButton} onClick={showModal}>
+        Contact Us
+      </button>
 
 
+      <section className={styles.ceoSection}>
+        <div className={styles.ceoText}>
+          <h2>Bharat Kumar Reddy Gujavarti </h2>
+          <span className={styles.role}>CEO</span>
+          <p>
+            At Pragmatiq, we empower businesses to pursue growth by delivering
+            fast and scalable digital solutions. Our no-code and low-code
+            technology enables rapid transformation, helping companies innovate
+            and thrive in a competitive landscape.
+          </p>
+        </div>
+
+        <div className={styles.ceoImage}>
+          <Image src="/bharatsir.jpg" alt="CEO" width={560} height={480} />
+        </div>
+      </section>
 
 
       <footer className={styles.footer7}>
@@ -203,7 +161,9 @@ export default function Home() {
             <div className={styles.logoWrap7}>
               <Image src="/prag.png" alt="Pragmatiq" width={146} height={46} />
             </div>
-            <button className={styles.contactBtn7} onClick={showModal}>Contact Us</button>
+            <button className={styles.contactBtn7} onClick={showModal}>
+              Contact Us
+            </button>
           </div>
 
           <div className={styles.right7}>
@@ -235,16 +195,17 @@ export default function Home() {
               <p>9999664467</p>
               <p>purplogener.in</p>
               <p>
-                Kondapur, Hitech City,<br />
+                Kondapur, Hitech City,
+                <br />
                 Hyderabad, India
               </p>
             </div>
           </div>
         </div>
         <div className={styles.rightBorder7} />
+
+
       </footer>
-
-
 
 
       <Modal
@@ -297,6 +258,7 @@ export default function Home() {
           </div>
         </div>
       </Modal>
+
 
 
 
